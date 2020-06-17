@@ -2,14 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function ListItem(props) {
-  return (
-    <li>
-      <button className="check-btn"></button>
-      {props.value}
-      <span className="close-btn">❌</span>
-    </li>
-  );
+class ListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCloseClick = this.handleCloseClick.bind(this);
+  }
+
+  handleCloseClick(e) {
+    this.props.onCloseClick(e.target.id);
+  }
+
+  render() {
+    return (
+      <li>
+        <button className="check-btn"></button>
+        {this.props.value}
+        <span 
+          id={this.props.id}
+          className="close-btn"
+          onClick={this.handleCloseClick}>❌</span>
+      </li>
+    );
+  }
 }
 
 class ToDoInput extends React.Component {
@@ -47,11 +61,13 @@ class ToDoApp extends React.Component {
     super(props);
     this.state = {
       todoValue: '',
+      cnt: 0,
       listItems: []
     };
 
     this.handleTodoChange = this.handleTodoChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCloseClick = this.handleCloseClick.bind(this);
   }
 
   handleTodoChange(value) {
@@ -61,17 +77,29 @@ class ToDoApp extends React.Component {
   handleSubmit() {
     this.setState({
       listItems: this.state.listItems.concat([{
-        id: this.state.listItems.length + 1,
+        id: this.state.cnt + 1,
         value: this.state.todoValue
       }]),
+      cnt: this.state.cnt + 1,
       todoValue: ''
+    });
+  }
+
+  handleCloseClick(id) {
+    const listItems = this.state.listItems;
+    this.setState({
+      listItems: listItems.filter(item => item.id !== parseInt(id))
     });
   }
 
   render() {
     const listItems = this.state.listItems;
     const todoList = listItems.map(todo => {
-      return <ListItem key={todo.id} value={todo.value} />;
+      return <ListItem 
+        key={todo.id} 
+        id={todo.id}
+        value={todo.value}
+        onCloseClick={this.handleCloseClick} />;
     })
 
     return (

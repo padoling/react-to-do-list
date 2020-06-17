@@ -56,9 +56,14 @@ input[type=submit] {
 
 .close-btn {
   position: absolute;
+  cursor: pointer;
   background-color: darksalmon;
   padding: 10px 10px;
   font-size: 13px;
   top: 0;
   right: 0;
+}
+
+.close-btn:hover {
+  background-color: tomato;
 }
