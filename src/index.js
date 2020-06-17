@@ -4,7 +4,11 @@ import './index.css';
 
 function ListItem(props) {
   return (
-    <li>{props.value}</li>
+    <li>
+      <button className="check-btn"></button>
+      {props.value}
+      <span className="close-btn">❌</span>
+    </li>
   );
 }
 

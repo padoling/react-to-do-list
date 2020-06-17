@@ -27,12 +27,38 @@ input[type=submit] {
 
 .todo-list {
   margin: auto;
-  padding: 10px 20px;
+  padding: 10px 10px;
   width: 80%;
-  max-width: 500px;
+  max-width: 550px;
 }
 
 .todo-list li {
-  padding: 10px 0;
+  position: relative;
   list-style-type: none;
+  background-color: bisque;
+  border-style: solid;
+  border-width: 0 0 3px 0;
+  border-color: white;
+  padding: 10px 35px 10px 40px;
+  font-size: 18px;
+}
+
+.check-btn {
+  position: absolute;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 3px;
+  border-color: white;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  background-color: darksalmon;
+  padding: 10px 10px;
+  font-size: 13px;
+  top: 0;
+  right: 0;
 }
