@@ -5,21 +5,34 @@
 }
 
 .todo-board {
+  padding: 0px 30px;
+}
+
+.todo-input {
   text-align: center;
-  padding: 0px 30px 0px 30px;
 }
 
 input[type=text] {
   width: 80%;
   max-width: 400px;
   padding: 12px 20px;
-  margin: 8px 0;
   display: inline-block;
   border-radius: 4px;
 }
 
 input[type=submit] {
   padding: 12px 30px;
-  margin: 8px 0;
   border-radius: 4px;
+}
+
+.todo-list {
+  margin: auto;
+  padding: 10px 20px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.todo-list li {
+  padding: 10px 0;
+  list-style-type: none;
 }
